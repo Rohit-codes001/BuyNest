@@ -1,0 +1,59 @@
+<div>
+                    <ul>
+                    <Link className='uppercase cursor-pointer py-4 px-2 ' to='/'>Home</Link>
+                    <Link className='uppercase cursor-pointer py-4 px-2 ' to='/about'>about</Link>
+                    <Link className='uppercase cursor-pointer py-4 px-2 ' to='/collection'>collection</Link>
+                    <Link className='uppercase cursor-pointer py-4 px-2 ' to='/contact'>contact</Link>
+                </ul>
+                </div>
+
+
+                
+
+            <div className={`absalute top-0 right-0 bottom-0 overflow-hidden bg-white transition-all${visible ? 'w-full' : 'w-0'} `}>
+                <div>
+                </div>
+            </div>
+
+            <div >
+                {
+                    showproducts.map((item , index)=>(
+                        <Card key={index} image={item.image} price={item.price} name={item.name}/>
+                    ))
+                }
+              </div>
+
+
+
+              
+
+
+                {/* ----- right side  ----  upside on phone  */ }
+                <div className=' flex flex-col w-[80%] h-[50%]  border-red-500  sm:h-[100%] sm:w-[50%]  sm:flex-row border items-center gap-4 '>
+                    <div className='flex hidden sm:block sm:flex-col items-center gap-4 border sm:ml-20 sm:h-[400px]'>
+                        
+                                {/*
+                                    productdata.image.map((item , index)=>(
+                                        <img className='w-[80px] h-[100px] border  ml-4' src={item} alt="" />
+                                    ))
+                               */ }      
+                               <div  className='w-[80px] h-[100px] border  ml-4'>
+                                
+                                </div>                                          
+
+
+                    </div>
+                    <div className='hidden sm:block sm:h-[400px] w-[350px] border'>
+
+                    </div>
+
+
+
+                </div>
+
+
+                {/* ----- left side  downside on phone ----*/}
+                <div className='hidden sm:block w-[50%] h-full border'>
+
+                </div>
+            </div>
