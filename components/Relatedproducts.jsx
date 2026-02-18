@@ -31,7 +31,7 @@ function Relatedproducts({ prodcutscategory, productsubcategory }) {
 {
     relatedproducts.map((item , index)=>(
         <Link key={index} to={`/products/${item._id}`}>
-        <Card key={index} image={item.image} name={item.name} price={item.price} /></Link>
+        <Card key={index} image={item.image[0]} name={item.name} price={item.price} /></Link>
     ))
 }
    </div>
