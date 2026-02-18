@@ -52,7 +52,7 @@ function Navbar() {
 
                     </div>
                 </div>
-                <Link className=' relative' to='/cart'><img className='w-6 sm:w-8' src="../assest/cart_icon.png" alt="" />
+                <Link className=' relative' to='/cart'><img className='w-6 sm:w-8' src={assets.cart_icon} alt="" />
                     <p className='absolute top-0 right-0 text-[15px] bg-amber-400 font-bold text-red-600 rounded-2xl '>{cartcount()}</p>
                 </Link>
 
