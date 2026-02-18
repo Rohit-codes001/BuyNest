@@ -2,6 +2,8 @@ import React, { useContext, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { ShopContext } from './ShopContext'
 
+import { assets } from '../assest/assets'
+
 
 function Navbar() {
     let [visible, setvisible] = useState(false)
@@ -9,7 +11,7 @@ function Navbar() {
 
     return (
         <div className='h-[56px] w-screen py-5  flex items-center justify-around '>
-            <img className='w-30 sm:w-50' src="../assest/BuyNest.png " alt="logo" />
+            <img className='w-30 sm:w-50' src={assets.BuyNest_logo} alt="logo" />
 
 
             <ul className=' prata-regular hidden  md:flex items-center gap-4 md:block '>
@@ -36,9 +38,9 @@ function Navbar() {
 
 
             <div className='flex items-center gap-8'>
-                <img className='w-6 sm:w-8' onClick={() => (setshowsearchbar(!showsearchbar))} src="../assest/search_icon.png" alt="" />
+                <img className='w-6 sm:w-8' onClick={() => (setshowsearchbar(!showsearchbar))} src={assets.search_icon} alt="" />
                 <div className='group relative'>
-                    <Link to={'/Login'}> <img className='w-6 sm:w-8' src="../assest/profile_icon.png" alt="" />  </Link>
+                    <Link to={'/Login'}> <img className='w-6 sm:w-8' src={assets.profile_icon} alt="" />  </Link>
  
                                       <div className='group-hover:block hidden cursor-pointer absolute border flex flex-col items-center justify-around gap-4 w-36 bg-slate-100 py-3 px-5 border-0'>
                         <ul>
@@ -54,7 +56,7 @@ function Navbar() {
                     <p className='absolute top-0 right-0 text-[15px] bg-amber-400 font-bold text-red-600 rounded-2xl '>{cartcount()}</p>
                 </Link>
 
-                <img  onClick={() => (setvisible(true))} className='md:hidden sm:hidden lg:hidden w-6 sm:h-8' src="../assest/menu_icon.png" alt="" />
+                <img  onClick={() => (setvisible(true))} className='md:hidden sm:hidden lg:hidden w-6 sm:h-8' src={assets.menu_icon} alt="" />
 
             </div>
 

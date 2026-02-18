@@ -6,7 +6,7 @@ import p_img2_4 from './p_img2_4.png'
 import p_img3 from './p_img3.png'
 import p_img4 from './p_img4.png'
 import p_img5 from './p_img5.png'
-import p_img6 from './p_img6.png'
+import p_img6 from './p_img6.png'  
 import p_img7 from './p_img7.png'
 import p_img8 from './p_img8.png'
 import p_img9 from './p_img9.png'
@@ -56,6 +56,7 @@ import p_img52 from './p_img52.png'
 
 
 import logo from './logo.png'
+import BuyNest_logo from './BuyNest.png'
 import hero_img from './hero_img.png'
 import cart_icon from './cart_icon.png'
 import bin_icon from './bin_icon.png'
@@ -76,6 +77,7 @@ import cross_icon from './cross_icon.png'
 
 export const assets = {
     logo,
+    BuyNest_logo,
     hero_img,
     cart_icon,
     dropdown_icon,
@@ -113,7 +115,7 @@ export const products = [
         name: "Men Round Neck Pure Cotton T-shirt",
         description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
         price: 200,
-        image: [p_img2_1,p_img1,p_img10,p_img11],
+        image: [p_img2_1,p_img2_2,p_img2_3,p_img2_4],
         category: "Men",
         subCategory: "Topwear",
         sizes: ["M", "L", "XL"],
