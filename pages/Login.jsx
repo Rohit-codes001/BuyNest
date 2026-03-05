@@ -9,8 +9,8 @@ function Login() {
     let [currentstate, setcurentstate] = useState("Login")
     let { token, settoken, usenavigate } = useContext(ShopContext)
     let [name, setname] = useState('')
-    let [email, setemail] = useState('')
-    let [password, setpassword] = useState('')
+    let [email, setemail] = useState('test@gmail.com')
+    let [password, setpassword] = useState('12345678')
     async function handleSubmit(e) {
         e.preventDefault()
         try{
