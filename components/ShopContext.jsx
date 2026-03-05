@@ -4,7 +4,7 @@ import { createContext } from 'react'
 // import { products } from '../assest/assets' //array
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom';
-let backendUrl = import.meta.env.VITE_BACKEND_URL
+import { backend_url } from '../src/App';
 
 
 export let ShopContext = createContext()
@@ -27,7 +27,7 @@ function ShopcontextProvider(props) {
     let getproducts = async () => {
         try {
             settoken(localStorage.getItem('token'))
-            let respons = await fetch('http://localhost:4000/api/user/allproducts', {
+            let respons = await fetch(backend_url+'/api/user/allproducts', {
                 method: 'GET'                
             })
             let data = await respons.json()
@@ -44,7 +44,7 @@ function ShopcontextProvider(props) {
 
          let getcart = async (token) =>{
                  try{
-                    let respons = await fetch('http://localhost:4000/api/cart/getCart',{
+                    let respons = await fetch(backend_url+'/api/cart/getCart',{
                     method:'POST',
     
                     headers:{
@@ -99,7 +99,7 @@ function ShopcontextProvider(props) {
             
                   console.log(prodcutId)
             try{
-                  let respons = await fetch('http://localhost:4000/api/cart/add',{
+                  let respons = await fetch(backend_url+'/api/cart/add',{
                     method:'POST',
                     body:JSON.stringify({prodcutId , size}),
                     headers:{
@@ -137,7 +137,7 @@ function ShopcontextProvider(props) {
 
         if(token){
             try{
-             await fetch('http://localhost:4000/api/cart/update',{
+             await fetch(backend_url+'/api/cart/update',{
                 method:'POST',
                 body:JSON.stringify({prodcutId , size , quantity}),
                 headers:{

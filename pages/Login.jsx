@@ -3,6 +3,7 @@ import { useState } from 'react'
 import Subscribe from "../components/Subscribe";
 import { ShopContext } from '../components/ShopContext';
 import { toast } from 'react-toastify';
+import {backend_url} from '../src/App'
 
 function Login() {
     let [currentstate, setcurentstate] = useState("Login")
@@ -18,7 +19,7 @@ function Login() {
             if(currentstate == "Sign up"){
 
 
-            let respons = await fetch('http://localhost:4000/api/user/register',{
+            let respons = await fetch(backend_url+'/api/user/register',{
                 method:"POST",
                 body:JSON.stringify({name ,email , password}),
                 headers:{
@@ -30,7 +31,7 @@ function Login() {
          
             }else{
                 
-            let respons = await fetch('http://localhost:4000/api/user/login',{
+            let respons = await fetch(backend_url+'/api/user/login',{
                 method:"POST",
                 body:JSON.stringify({email , password}),
                 headers:{

@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { ShopContext } from '../components/ShopContext'
 import Title2 from '../components/Title2'
+import { backend_url } from '../src/App'
 
 function Order() {
     let { products, currency } = useContext(ShopContext)
@@ -13,7 +14,7 @@ function Order() {
         return null
        }
         try {
-            let respons = await fetch('http://localhost:4000/api/order/userOrders', {
+            let respons = await fetch(backend_url+'/api/order/userOrders', {
                 method: 'POST',
                 headers: {
                     'Content-type': "application/json",

@@ -64,7 +64,7 @@ function PlaceOrder() {
 
             switch (method) {
                 case 'COD':
-                    let respons = await fetch('http://localhost:4000/api/order/placeorder', {
+                    let respons = await fetch(backend_url+'/api/order/placeorder', {
                         method: 'POST',
                         body: JSON.stringify( orderdata ),
                         headers: {
