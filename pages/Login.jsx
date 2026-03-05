@@ -73,7 +73,7 @@ function Login() {
                         <input onChange={(e) => (setpassword(e.target.value))} value={password} className='text-sm py-2 px-2 border border-[#000000]' type="password" placeholder='Enter your password' required />
                         <div className="flex justify-between"><p>Forgot your password?</p> <p>{currentstate === "Login" ? <p onClick={() => (setcurentstate('Sign up'))}>Create account</p> : <p onClick={() => (setcurentstate('Login'))}>Login here</p>}</p></div>
                     </div>
-                    <button onClick={() => (setcurentstate('Login'))} type='submit' className=" mt-4 py-2 px-6 border bg-black text-white">{currentstate === 'Login' ? "Login" : "Sign up"}</button>
+                    <button onClick={() => (setcurentstate('Login'))} type='submit' className=" mt-4 py-2 px-6 border bg-black text-white cursor-pointer">{currentstate === 'Login' ? "Login" : "Sign up"}</button>
                 </form>
             </div> 
             <Subscribe />
