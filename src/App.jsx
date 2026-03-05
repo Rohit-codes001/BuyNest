@@ -14,6 +14,7 @@ import Footer from '../components/Footer'
 import Searchbar from '../components/Searchbar'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+export let backend_url = import.meta.env.VITE_BACKEND_URL
 
 function App() {
   return (

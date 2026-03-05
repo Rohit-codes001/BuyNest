@@ -5,30 +5,34 @@ import CartTotal from '../components/CartTotal'
 
 function Cart() {
 
-    let { products, cartdata, currency, updatequantity , usenavigate} = useContext(ShopContext)
+    let { products, cartdata, currency, updatequantity, usenavigate } = useContext(ShopContext)
     let [allcartitem, setallcartitems] = useState([])
 
     useEffect(() => {
-        let temp = []
-        for (let key in cartdata) {
-            for (let keysize in cartdata[key]) {
-                if (cartdata[key][keysize] > 0) {
-                    temp.push({
-                        _id: key,
-                        size: keysize,
-                        quantity: cartdata[key][keysize]
-                    })
+        if (products.length > 0) {
+            let temp = []
+            for (let key in cartdata) {
+                for (let keysize in cartdata[key]) {
+                    if (cartdata[key][keysize] > 0) {
+                        temp.push({
+                            _id: key,
+                            size: keysize,
+                            quantity: cartdata[key][keysize]
+                        })
+                    }
                 }
             }
+            setallcartitems(temp)
+
         }
-        setallcartitems(temp)
 
-
-    }, [cartdata])
-
+    }, [cartdata, products])
 
 
 
+   useEffect(()=>(
+    console.log(allcartitem)
+   ),[allcartitem])
 
 
 
@@ -50,13 +54,13 @@ function Cart() {
                             <div key={index} className='border-t border-b mt-4 mx-10 sm:mx-20 grid grid-cols-[4fr_0.5fr_0.5fr] sm:[4fr_2fr_0.5fr] items-center gap-4'>
 
                                 <div className='flex items-start gap-6'>
-                                    <img className='w-16 sm:w-20' src={productdata.image[0]} alt="" />
+                                    <img className='w-16 sm:w-20' src={productdata?.image?.[0]} alt="" />
 
                                     <div>
-                                        <p className='text-[12px] sm:text-lg font-medium'>{productdata.name}</p>
+                                        <p className='text-[12px] sm:text-lg font-medium'>{ productdata?.name}</p>
                                         <div>
-                                            <p>{currency} {productdata.price}</p>
-                                            <p>{item.size}</p>
+                                            <p>{currency} {productdata?.price}</p>
+                                            <p>{item?.size}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -74,12 +78,12 @@ function Cart() {
                 <div className='w-full flex flex-col sm:w-[480px] start-end '>
 
                     <CartTotal />
-                        <div className='flex items-center justify-end mx-10 sm:mx-20'>
-                            
-                                
-                            <button onClick={()=>(usenavigate('/place-Order'))} className=' cursor-pointer  bg-black text-white px-5 sm:px-10 py-3 font-medium hover:scale-105 '>Proceed to checkout</button>
-                        
-                        </div>
+                    <div className='flex items-center justify-end mx-10 sm:mx-20'>
+
+
+                        <button onClick={() => (usenavigate('/place-Order'))} className=' cursor-pointer  bg-black text-white px-5 sm:px-10 py-3 font-medium hover:scale-105 '>Proceed to checkout</button>
+
+                    </div>
                 </div>
             </div>
 

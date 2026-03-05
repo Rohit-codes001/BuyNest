@@ -6,11 +6,13 @@ import Card from './Card'
 function LatestCollection() {
     const [showproducts , setshowproducts] = useState([])
     const { products, currency, delivery_fee } = useContext(ShopContext)
+ 
      
     useEffect(()=>{
         setshowproducts(products.slice(0,10))
-    },[])
-    console.log(showproducts)
+    },[products])
+    
+    
 
     
 

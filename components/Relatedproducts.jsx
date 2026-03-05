@@ -22,7 +22,7 @@ function Relatedproducts({ prodcutscategory, productsubcategory }) {
      setrelatedproducts(cp_profucts.slice(0,5))
         }
     }, [products])
- console.log("relatedproducts" +" "+ relatedproducts)
+ 
 
 
     return (

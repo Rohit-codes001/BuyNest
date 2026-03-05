@@ -7,8 +7,7 @@ function Searchbar() {
     let {search , setsearch , showsearchbar , setshowsearchbar} = useContext(ShopContext)
     let location = useLocation()
     
-    console.log("path" +" "+ location.pathname)
-    console.log(search)
+    
 
     return showsearchbar && location.pathname.includes('/collection') ? (
         <div className='bg-grey-50  flex items-center justify-around'>

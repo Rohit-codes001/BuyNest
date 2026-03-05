@@ -7,7 +7,14 @@ import { assets } from '../assest/assets'
 
 function Navbar() {
     let [visible, setvisible] = useState(false)
-    let { showsearchbar, setshowsearchbar, cartcount } = useContext(ShopContext)
+    let { showsearchbar, setshowsearchbar, cartcount, usenavigate,token ,settoken, setcartdata } = useContext(ShopContext)
+
+    let logout = () => {
+        usenavigate('/Login')
+        localStorage.removeItem('token')
+        setcartdata({})
+    
+    }
 
     return (
         <div className='h-[56px] w-screen py-5  flex items-center justify-around '>
@@ -40,13 +47,13 @@ function Navbar() {
             <div className='flex items-center gap-8'>
                 <img className='w-6 sm:w-8' onClick={() => (setshowsearchbar(!showsearchbar))} src={assets.search_icon} alt="" />
                 <div className='group relative'>
-                    <Link to={'/Login'}> <img className='w-6 sm:w-8' src={assets.profile_icon} alt="" />  </Link>
- 
-                                      <div className='group-hover:block hidden cursor-pointer absolute border flex flex-col items-center justify-around gap-4 w-36 bg-slate-100 py-3 px-5 border-0'>
+                    <Link to={token ? '' : usenavigate('/Login')}> <img className='w-6 sm:w-8' src={assets.profile_icon} alt="" />  </Link>
+
+                    <div className={` ${token ? 'group-hover:block' : ''}  hidden cursor-pointer absolute border flex flex-col items-center justify-around gap-4 w-36 bg-slate-100 py-3 px-5 border-0`}>
                         <ul>
                             <li className='cursor-pointer'>My Profile</li>
-                            <li className='cursor-pointer'>Orders</li>
-                            <li className='cursor-pointer'>Logout</li>
+                            <li onClick={()=>(usenavigate('/Order'))} className='cursor-pointer'>Orders</li>
+                            <li onClick={logout} className='cursor-pointer'>Logout</li>
                         </ul>
 
 
@@ -56,7 +63,7 @@ function Navbar() {
                     <p className='absolute top-0 right-0 text-[15px] bg-amber-400 font-bold text-red-600 rounded-2xl '>{cartcount()}</p>
                 </Link>
 
-                <img  onClick={() => (setvisible(true))} className='md:hidden sm:hidden lg:hidden w-6 sm:h-8' src={assets.menu_icon} alt="" />
+                <img onClick={() => (setvisible(true))} className='md:hidden sm:hidden lg:hidden w-6 sm:h-8' src={assets.menu_icon} alt="" />
 
             </div>
 
