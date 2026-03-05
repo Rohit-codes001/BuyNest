@@ -7,7 +7,7 @@ import {backend_url} from '../src/App'
 
 function Login() {
     let [currentstate, setcurentstate] = useState("Login")
-    let { token, settoken, backendUrl, usenavigate } = useContext(ShopContext)
+    let { token, settoken, usenavigate } = useContext(ShopContext)
     let [name, setname] = useState('')
     let [email, setemail] = useState('')
     let [password, setpassword] = useState('')
