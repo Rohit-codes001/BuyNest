@@ -97,7 +97,7 @@ function ShopcontextProvider(props) {
 
         if(token){
             
-                  console.log(prodcutId)
+            
             try{
                   let respons = await fetch(backend_url+'/api/cart/add',{
                     method:'POST',
@@ -133,7 +133,7 @@ function ShopcontextProvider(props) {
         let cartitem = structuredClone(cartdata)
         cartitem[prodcutId][size] = quantity
         setcartdata(cartitem)
-
+        
 
         if(token){
             try{

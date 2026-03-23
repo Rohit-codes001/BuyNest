@@ -7,7 +7,7 @@ import Relatedproduct from '../components/Relatedproducts'
 function Products() {
 
     let { productId } = useParams()
-    console.log("productId" + " " + productId)
+    
     let { products, currency , addcart } = useContext(ShopContext)
     let [productdata, setproductdata] = useState(false)
     let [productimage, setprodcutimage] = useState('')
@@ -47,9 +47,9 @@ function Products() {
                     <div className='h-[20%] w-[80%] sm:h-[400px] sm:w-[120px] sm:ml-14  flex items-center gap-2 sm:flex-col overflow-scroll'>
                         {
 
-                            productdata.image.map((item) => (
+                            productdata.image.map((item , index) => (
 
-                                <img onClick={() => (setprodcutimage(item))} className='  m-2 h-full w-[20px] sm:h-[90px] w-[100px] mt-2 ' src={item} alt="" />
+                                <img key={index} onClick={() => (setprodcutimage(item))} className='  m-2 h-full w-[20px] sm:h-[90px] w-[100px] mt-2 ' src={item} alt="" />
                             ))
                         }
                     </div>
@@ -57,7 +57,7 @@ function Products() {
 
                 </div>
 
-                {/* left side div phone me upper div */}
+                {/* right side div phone me down div */}
                 <div className='w-full h-[30%] sm:h-full  sm:flex sm:flex-col sm:gap4'>
                     <p className='text-[20px] py-2 px-2 sm:text-2xl sm:pt-10'>{productdata.name}</p>
                     <div>

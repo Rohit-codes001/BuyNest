@@ -40,6 +40,43 @@ function PlaceOrder() {
         }
     }
 
+    function initpay(order) {
+        console.log(order.id)
+        const options = {
+
+            key: import.meta.env.VITE_RAZORPAY_KEY_ID,
+            amount: order.amount,
+            currency: order.currency,
+            name: "Order payemnt",
+            descreption: "order payment",
+            order_id: order.id,
+            receipt: order.receipt,
+            handler: async (respons) => {
+                console.log(respons)
+                let api = await fetch(backend_url + '/api/order/verifyrazorpayPayment', {
+                    method: 'POST',
+                    body: JSON.stringify(respons),
+                    headers: {
+                        'Content-Type': "application/json",
+                        authorization: token
+
+                    }
+                })
+
+                let data = await api.json()
+                if (data.status) { 
+                    setcartdata({})
+                    console.log('done')
+                    usenavigate('/Order')
+
+                }
+            }
+        }
+        const rzp = new window.Razorpay(options)
+        rzp.open()
+
+    }
+
     async function onsubmithandler(e) {
         e.preventDefault()
         try {
@@ -64,16 +101,16 @@ function PlaceOrder() {
 
             switch (method) {
                 case 'COD':
-                    let respons = await fetch(backend_url+'/api/order/placeorder', {
+                    let respons = await fetch(backend_url + '/api/order/placeorder', {
                         method: 'POST',
-                        body: JSON.stringify( orderdata ),
+                        body: JSON.stringify(orderdata),
                         headers: {
                             'Content-Type': 'application/json',
                             authorization: token
                         }
                     })
                     let data = await respons.json()
-                    
+
                     if (data.success) {
                         setcartdata({})
                         console.log('done')
@@ -81,8 +118,27 @@ function PlaceOrder() {
 
 
                     } else {
-                    
+
                         toast.error(data.message)
+                    }
+                    break;
+
+                case 'razorpay':
+                    let api = await fetch(backend_url + '/api/order/placeorderRazorpay', {
+                        method: 'POST',
+                        body: JSON.stringify(orderdata),
+                        headers: {
+
+                            'Content-Type': 'application/json',
+                            authorization: token
+                        }
+                    })
+                    let result = await api.json();
+                    if (result.success) {
+                        console.log(result.orderinfo)
+                        initpay(result.orderinfo)
+                    } else {
+                        console.log(result.message)
                     }
                     break;
                 default:
